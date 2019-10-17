@@ -9,7 +9,7 @@ FROM ubuntu:xenial
 
 # Install Nginx.
 RUN \
-  apt-get update && apt-get install software-properties-common \
+  apt-get update && apt-get install -y software-properties-common \
    && apt-get install -y nginx && \
   rm -rf /var/lib/apt/lists/* && \
   echo "\ndaemon off;" >> /etc/nginx/nginx.conf && \
