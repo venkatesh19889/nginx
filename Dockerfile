@@ -5,11 +5,11 @@
 #
 
 # Pull base image.
-FROM ubuntu:latest
+FROM dockerfile/ubuntu:latest
 
 # Install Nginx.
 RUN \
-  apt-add-repository -y ppa:nginx/stable && \
+  add-apt-repository -y ppa:nginx/stable && \
   apt-get update && \
   apt-get install -y nginx && \
   rm -rf /var/lib/apt/lists/* && \
