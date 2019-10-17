@@ -9,6 +9,7 @@ FROM dockerfile/ubuntu
 
 # Install Nginx.
 RUN \
+  add-software-properties-common \
   add-apt-repository -y ppa:nginx/stable && \
   apt-get update && \
   apt-get install -y nginx && \
