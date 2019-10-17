@@ -1,25 +1,13 @@
 pipeline {
   environment {
-    registry = "gustavoapolinario/docker-test"
-    registryCredential = 'dockerhub'
-    dockerImage = ''
+    registry = "192.168.0.26:5000/nginx"
+    dockerImage = 'pip-nginx'
   }
-  agent any
-  tools {nginx "nginx" }
+   agent any
   stages {
     stage('Cloning Git') {
       steps {
-        git 'https://github.com/gustavoapolinario/node-todo-frontend'
-      }
-    }
-    stage('Build') {
-       steps {
-         sh 'npm install'
-       }
-    }
-    stage('Test') {
-      steps {
-        sh 'npm test'
+          git 'https://github.com/venkatesh19889/nginx.git'
       }
     }
     stage('Building image') {
@@ -31,17 +19,21 @@ pipeline {
     }
     stage('Deploy Image') {
       steps{
-         script {
-            docker.withRegistry( '', registryCredential ) {
+        script {
             dockerImage.push()
           }
         }
       }
-    }
+    
     stage('Remove Unused docker image') {
       steps{
         sh "docker rmi $registry:$BUILD_NUMBER"
       }
     }
+    
   }
+  
 }
+
+
+    
