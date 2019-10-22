@@ -9,8 +9,8 @@ FROM ubuntu:xenial
 
 # Install Nginx.
 RUN \
-  apt-get update && apt-get install -y software-properties-common \
-   && apt-get install -y nginx && \
+  apt update --fix-missing && apt install -y software-properties-common \
+   && apt install -y nginx && \
   rm -rf /var/lib/apt/lists/* && \
   echo "\ndaemon off;" >> /etc/nginx/nginx.conf && \
   chown -R www-data:www-data /var/lib/nginx
