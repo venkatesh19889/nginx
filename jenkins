@@ -1,7 +1,7 @@
 pipeline {
   environment {
-    registry = "192.168.0.26:5000/nginx"
-    dockerImage = 'pippeline-nginx'
+    registry = "192.168.0.26:5000/softnginx"
+    dockerImage = 'pipeline-nginx'
   }
    agent any
   stages {
